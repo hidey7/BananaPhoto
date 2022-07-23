@@ -39,28 +39,34 @@ class NewNextViewController: UIViewController, UIImagePickerControllerDelegate, 
         noimageLabel.adjustsFontSizeToFitWidth = true
         checkIsimageSelected()
         
-//        imageviewOfselectedImageView.isUserInteractionEnabled = true
-        
         overrideUserInterfaceStyle = .light
+        setupNavigationbar()
         
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustButtonImage(button: bananaButton)
+        adjustButtonImage(button: grapeButton)
+        adjustButtonImage(button: appleButton)
+    }
+    
+    func adjustButtonImage(button: UIButton) {
+        button.imageView?.contentMode = .scaleAspectFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+    }
+    
+    
+    func setupNavigationbar() {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 238/255, green: 243/255, blue: 56/255, alpha: 1.0)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "photo"), landscapeImagePhone: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(showPhotoLibrary))
-        
-//        setupSelectedImageView()
-//        self.view.sendSubviewToBack(imageviewOfselectedImageView)
     }
     
-//    func setupSelectedImageView() {
-//        let doubleTouche = UIPinchGestureRecognizer(target: self, action: #selector(selectedImageViewDoubleTouched(sender:)))
-//        imageviewOfselectedImageView.addGestureRecognizer(doubleTouche)
-//    }
-//
-//    @objc func selectedImageViewDoubleTouched(sender: UIPinchGestureRecognizer) {
-//        imageviewOfselectedImageView.transform = CGAffineTransform(scaleX: sender.scale, y: sender.scale)
-//    }
-
+    
     @objc func showPhotoLibrary(){
         let sourceType:UIImagePickerController.SourceType = .photoLibrary
         
@@ -84,7 +90,7 @@ class NewNextViewController: UIViewController, UIImagePickerControllerDelegate, 
             //ボタンの背景に選択した画像を設定
             imageviewOfselectedImageView.image = image
             resizeSelectedImage(image: image)
-           
+            
             var subViews = imageviewOfselectedImageView.subviews
             for subView in subViews {
                 subView.removeFromSuperview()
@@ -167,58 +173,6 @@ class NewNextViewController: UIViewController, UIImagePickerControllerDelegate, 
      }
      */
     
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        if let obj = touches.first?.view as? UIImageView {
-            
-            if obj != imageviewOfselectedImageView {
-                // タッチイベントを取得.
-                let aTouch: UITouch = touches.first!
-                
-                // 移動した先の座標を取得.
-                let location = aTouch.location(in: self.imageviewOfselectedImageView)
-                
-                // 移動する前の座標を取得.
-                let prevLocation = aTouch.previousLocation(in: self.imageviewOfselectedImageView)
-                
-                // CGRect生成.
-                //            var myFrame: CGRect = banana.frame
-                var myCenterX: CGFloat = obj.center.x
-                var myCenterY: CGFloat = obj.center.y
-                // ドラッグで移動したx, y距離をとる.
-                let deltaX: CGFloat = location.x - prevLocation.x
-                let deltaY: CGFloat = location.y - prevLocation.y
-                
-                // 移動した分の距離をmyFrameの座標にプラスする.
-                myCenterX += deltaX
-                myCenterY += deltaY
-                
-                // frameにmyFrameを追加.
-                obj.center.x = myCenterX
-                obj.center.y = myCenterY
-                
-                let rect = imageviewOfselectedImageView.bounds.insetBy(dx: obj.frame.width / 2, dy: obj.frame.height / 2)
-                if obj.center.x <= rect.minX {
-                    obj.center.x = rect.minX
-                }
-                if obj.center.x >= rect.maxX{
-                    obj.center.x = rect.maxX
-                }
-                if obj.center.y <= rect.minY{
-                    obj.center.y = rect.minY
-                }
-                if obj.center.y >= rect.maxY{
-                    obj.center.y = rect.maxY
-                }
-
-            }
-            
-        }
-    }
-    
-    //    }
     
 }
 
@@ -346,56 +300,24 @@ extension NewNextViewController {
     
     @IBAction func bananaButtonTapped(_ sender: Any) {
         
-//        let banana = UIImageView(image: UIImage(named: "bigbanana"))
-//
-//        let centerX = imageviewOfselectedImageView.frame.size.width / 2
-//        let centerY = imageviewOfselectedImageView.frame.size.height / 2
-//        banana.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-//        banana.isUserInteractionEnabled = true
-//
-//        self.imageviewOfselectedImageView.addSubview(banana)
-//        banana.center.x = centerX
-//        banana.center.y = centerY
-        
-         AddFruits.shared.addFruits(imgView: self.imageviewOfselectedImageView, fruitName: "bigbanana")
+        AddFruits.shared.addFruits(imgView: self.imageviewOfselectedImageView, fruitName: "bigbanana")
         
     }
     
     
     
     @IBAction func grapeButtonTapped(_ sender: Any) {
-//        let grape = UIImageView(image: UIImage(named: "biggrape"))
-//
-//        let centerX = imageviewOfselectedImageView.frame.size.width / 2
-//        let centerY = imageviewOfselectedImageView.frame.size.height / 2
-//        grape.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-//        grape.isUserInteractionEnabled = true
-//
-//        self.imageviewOfselectedImageView.addSubview(grape)
-//        grape.center.x = centerX
-//        grape.center.y = centerY
         
-         AddFruits.shared.addFruits(imgView: self.imageviewOfselectedImageView, fruitName: "biggrape")
-        
+        AddFruits.shared.addFruits(imgView: self.imageviewOfselectedImageView, fruitName: "biggrape")
         
     }
     
     @IBAction func appleButtonTapped(_ sender: Any) {
         
-//        let apple = UIImageView(image: UIImage(named: "apple"))
-//
-//        let centerX = imageviewOfselectedImageView.frame.size.width / 2
-//        let centerY = imageviewOfselectedImageView.frame.size.height / 2
-//        apple.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-//        apple.isUserInteractionEnabled = true
-//
-//        self.imageviewOfselectedImageView.addSubview(apple)
-//        apple.center.x = centerX
-//        apple.center.y = centerY
-        
         AddFruits.shared.addFruits(imgView: self.imageviewOfselectedImageView, fruitName: "apple")
+        
     }
-  
+    
     
 }
 
