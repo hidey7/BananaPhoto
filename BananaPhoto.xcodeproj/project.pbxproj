@@ -10,12 +10,12 @@
 		707FFB23513C15AB5D3B2E42 /* Pods_BananaPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5D4F7E67EF510411C86EDA /* Pods_BananaPhoto.framework */; };
 		C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D526D06FBE00528DB5 /* AppDelegate.swift */; };
 		C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */; };
-		C163A1DA26D06FBE00528DB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D926D06FBE00528DB5 /* ViewController.swift */; };
 		C163A1DD26D06FBE00528DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DB26D06FBE00528DB5 /* Main.storyboard */; };
 		C163A1DF26D06FC000528DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DE26D06FC000528DB5 /* Assets.xcassets */; };
 		C163A1E226D06FC000528DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1E026D06FC000528DB5 /* LaunchScreen.storyboard */; };
-		C163A1ED26D0751700528DB5 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1EC26D0751700528DB5 /* NextViewController.swift */; };
-		C163A1EF26D09A0B00528DB5 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1EE26D09A0B00528DB5 /* PhotoViewController.swift */; };
+		C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */; };
+		C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3C7A4286AB026008083D6 /* AddFruits.swift */; };
+		C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +24,13 @@
 		C163A1D226D06FBE00528DB5 /* BananaPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BananaPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C163A1D526D06FBE00528DB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C163A1D926D06FBE00528DB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C163A1DC26D06FBE00528DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C163A1DE26D06FC000528DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C163A1E126D06FC000528DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C163A1E326D06FC000528DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C163A1EC26D0751700528DB5 /* NextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
-		C163A1EE26D09A0B00528DB5 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNextViewController.swift; sourceTree = "<group>"; };
+		C1D3C7A4286AB026008083D6 /* AddFruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruits.swift; sourceTree = "<group>"; };
+		C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		F6DB75E95EC5C49EBC94C3D0 /* Pods-BananaPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BananaPhoto.release.xcconfig"; path = "Target Support Files/Pods-BananaPhoto/Pods-BananaPhoto.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,7 +52,6 @@
 				0199794983FDECB2576DF50A /* Pods-BananaPhoto.debug.xcconfig */,
 				F6DB75E95EC5C49EBC94C3D0 /* Pods-BananaPhoto.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -77,6 +76,7 @@
 		C163A1D426D06FBE00528DB5 /* BananaPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				C1E4FB5C2813CB91006807D4 /* Extensions */,
 				C163A1EB26D074FC00528DB5 /* Controller */,
 				C163A1EA26D074F800528DB5 /* View */,
 				C163A1E926D074F000528DB5 /* Model */,
@@ -88,6 +88,7 @@
 		C163A1E926D074F000528DB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1D3C7A4286AB026008083D6 /* AddFruits.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,11 +108,17 @@
 			children = (
 				C163A1D526D06FBE00528DB5 /* AppDelegate.swift */,
 				C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */,
-				C163A1D926D06FBE00528DB5 /* ViewController.swift */,
-				C163A1EC26D0751700528DB5 /* NextViewController.swift */,
-				C163A1EE26D09A0B00528DB5 /* PhotoViewController.swift */,
+				C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C1E4FB5C2813CB91006807D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EE38F3FC2F4B5F5B00CBC577 /* Frameworks */ = {
@@ -218,11 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C163A1DA26D06FBE00528DB5 /* ViewController.swift in Sources */,
-				C163A1ED26D0751700528DB5 /* NextViewController.swift in Sources */,
+				C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */,
+				C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */,
+				C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */,
 				C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */,
 				C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */,
-				C163A1EF26D09A0B00528DB5 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,14 +378,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = R43R4Y2L5Q;
 				INFOPLIST_FILE = BananaPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hideya.BananaPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -393,14 +400,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = R43R4Y2L5Q;
 				INFOPLIST_FILE = BananaPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hideya.BananaPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
