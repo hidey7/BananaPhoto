@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		707FFB23513C15AB5D3B2E42 /* Pods_BananaPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5D4F7E67EF510411C86EDA /* Pods_BananaPhoto.framework */; };
+		C116357928B9EFB20054F49F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C116357828B9EFB20054F49F /* MainViewController.swift */; };
 		C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D526D06FBE00528DB5 /* AppDelegate.swift */; };
 		C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */; };
 		C163A1DD26D06FBE00528DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DB26D06FBE00528DB5 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		0199794983FDECB2576DF50A /* Pods-BananaPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BananaPhoto.debug.xcconfig"; path = "Target Support Files/Pods-BananaPhoto/Pods-BananaPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5D4F7E67EF510411C86EDA /* Pods_BananaPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BananaPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C116357828B9EFB20054F49F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C163A1D226D06FBE00528DB5 /* BananaPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BananaPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C163A1D526D06FBE00528DB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				C163A1D526D06FBE00528DB5 /* AppDelegate.swift */,
 				C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */,
 				C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */,
+				C116357828B9EFB20054F49F /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */,
 				C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */,
 				C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */,
+				C116357928B9EFB20054F49F /* MainViewController.swift in Sources */,
 				C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */,
 				C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */,
 			);
