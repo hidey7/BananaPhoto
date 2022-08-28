@@ -7,8 +7,28 @@
 
 import UIKit
 import AVFoundation
+import PhotosUI
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let image = image {
+//                    self.selectedImage = image as! UIImage
+                    DispatchQueue.main.async {
+                        self.imageContainerView.backgroundColor = .black
+                        self.setImageToSelectedImageView(image: image as! UIImage)
+                    }
+                }
+            }
+        }
+    }
+    
     
     var toolBar = UIToolbar()
     
@@ -24,15 +44,19 @@ class MainViewController: UIViewController {
     var grapeButton = UIButton()
     var appleButton = UIButton()
     
+    var selectedImage = UIImage()
+    var selectedImageView = UIImageView()
+    
     //colorRGB = R238 G243 B67
     let bananaColor = UIColor.init(red: 238/255, green: 243/255, blue: 67/255, alpha: 1.0)
+    
+    var imageViewWidthConstraint: NSLayoutConstraint!
+    var imageViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        //        navigationItem.title = "画面1"
-        
         if #available(iOS 15.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -44,16 +68,20 @@ class MainViewController: UIViewController {
         setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     
     private func setupUI() {
         setupNavigationBar()
         setupToolBar()
         setupSuperStackView()
+        
+        selectedImageView.translatesAutoresizingMaskIntoConstraints = false
+        selectedImageView.image = UIImage(named: "noImage")
+        imageContainerView.addSubview(selectedImageView)
+        selectedImageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor).isActive = true
+        selectedImageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor).isActive = true
+        
     }
+    
     
     //MARK: - NAVIGATIONBAR
     private func setupNavigationBar() {
@@ -62,7 +90,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func barButtonItemTapped(_ sender: UIBarButtonItem) {
-        
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .any(of: [.images, .livePhotos])
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
     }
     
     //MARK: - TOOLBAR
@@ -139,7 +172,6 @@ class MainViewController: UIViewController {
     private func setupImageContainerView() {
         self.imageContainerView = UIView()
         imageContainerView.translatesAutoresizingMaskIntoConstraints = false
-        imageContainerView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
     }
     
     //MARK: - BUTTONSCONTAINERSTACKVIEW
@@ -152,7 +184,7 @@ class MainViewController: UIViewController {
         buttonsContainerStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsContainerStackView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         buttonsContainerStackView.axis = .horizontal
-        //        buttonsContainerStackView?.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 300)
+        
         bananaButton.translatesAutoresizingMaskIntoConstraints = false
         grapeButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.translatesAutoresizingMaskIntoConstraints = false
@@ -170,8 +202,6 @@ class MainViewController: UIViewController {
         buttonsContainerStackView.addArrangedSubview(appleButton)
         
         NSLayoutConstraint.activate([
-            //            buttonsContainerStackView.widthAnchor.constraint(equalToConstant: self.view.bounds.width),
-            
             bananaButton.heightAnchor.constraint(equalTo: buttonsContainerStackView.heightAnchor),
             grapeButton.heightAnchor.constraint(equalTo: buttonsContainerStackView.heightAnchor),
             appleButton.heightAnchor.constraint(equalTo: buttonsContainerStackView.heightAnchor),
@@ -191,4 +221,48 @@ class MainViewController: UIViewController {
      }
      */
     
+}
+
+extension MainViewController {
+    
+    private func setImageToSelectedImageView(image: UIImage) {
+        
+        selectedImageView.translatesAutoresizingMaskIntoConstraints = false
+        selectedImageView.image = image
+        
+        let containerWidth: CGFloat = imageContainerView.frame.size.width
+        let containerHeight: CGFloat = imageContainerView.frame.size.height
+        let imgWidth: CGFloat = image.size.width
+        let imgHeight: CGFloat = image.size.height
+        
+        let widthScale: CGFloat = containerWidth / imgWidth
+        let heightScale: CGFloat = containerHeight / imgHeight
+        
+        if imageViewWidthConstraint == nil {
+            imageViewWidthConstraint = self.selectedImageView.widthAnchor.constraint(equalToConstant: imgWidth * widthScale)
+            selectedImageView.addConstraint(imageViewWidthConstraint)
+        }
+        if imageViewHeightConstraint == nil {
+            imageViewHeightConstraint = self.selectedImageView.heightAnchor.constraint(equalToConstant: imgHeight * widthScale)
+            selectedImageView.addConstraint(imageViewHeightConstraint)
+        }
+        
+        if imgWidth >= imgHeight {
+            
+            imageViewWidthConstraint.constant = imgWidth * widthScale
+            imageViewHeightConstraint.constant = imgHeight * widthScale
+            selectedImageView.layoutIfNeeded()
+                    
+        } else {
+            
+            imageViewWidthConstraint.constant = imgWidth * heightScale
+            imageViewHeightConstraint.constant = imgHeight * heightScale
+            selectedImageView.layoutIfNeeded()
+            
+        }
+        
+        
+        
+        
+    }
 }
