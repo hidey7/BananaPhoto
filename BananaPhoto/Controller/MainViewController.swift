@@ -19,10 +19,11 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
-//                    self.selectedImage = image as! UIImage
+                    self.selectedImage = image as! UIImage
                     DispatchQueue.main.async {
                         self.imageContainerView.backgroundColor = .black
                         self.setImageToSelectedImageView(image: image as! UIImage)
+                        self.checkIsEnableAboutToobarButtons()
                     }
                 }
             }
@@ -44,7 +45,7 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     var grapeButton = UIButton()
     var appleButton = UIButton()
     
-    var selectedImage = UIImage()
+    var selectedImage : UIImage? = nil
     var selectedImageView = UIImageView()
     
     //colorRGB = R238 G243 B67
@@ -66,6 +67,17 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         }
         
         setupUI()
+        checkIsEnableAboutToobarButtons()
+    }
+    
+    private func checkIsEnableAboutToobarButtons() {
+        if selectedImage == nil {
+            shareButtonItem.isEnabled = false
+            saveButtonItem.isEnabled = false
+        } else {
+            shareButtonItem.isEnabled = true
+            saveButtonItem.isEnabled = true
+        }
     }
     
     
@@ -131,9 +143,39 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     
     @objc func shareButtonTapped(_ sender: UIButton) {
         print("shareButtonTapped")
+        let shareImage = selectedImageView.image
+        let items = [shareImage as Any] as [Any]
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
     }
+    
     @objc func saveButtonTapped(_ sender: UIButton) {
         print("saveButtonTapped")
+        let targetImage = selectedImage
+        let alertController = UIAlertController(title: "保存", message: "この画像を保存しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [self] (ok) in
+            UIImageWriteToSavedPhotosAlbum(targetImage!, self, #selector(showResultOfSaveImage(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        let cancelAction = UIAlertAction(title: "CANCEL", style: .default) { (cancel) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func showResultOfSaveImage(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+        
+        var title = "保存完了"
+        var message = "カメラロールに保存しました"
+        
+        if error != nil {
+            title = "エラー"
+            message = "保存に失敗しました"
+        }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - SUPERSTAKCVIEW
@@ -189,6 +231,14 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         grapeButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         
+        bananaButton.tag = 0
+        grapeButton.tag = 1
+        appleButton.tag = 2
+        
+        bananaButton.addTarget(self, action: #selector(fruitButtonTapped(_:)), for: .touchUpInside)
+        grapeButton.addTarget(self, action: #selector(fruitButtonTapped(_:)), for: .touchUpInside)
+        appleButton.addTarget(self, action: #selector(fruitButtonTapped(_:)), for: .touchUpInside)
+        
         bananaButton.setImage(UIImage(named: "bigbanana"), for: .normal)
         grapeButton.setImage(UIImage(named: "biggrape"), for: .normal)
         appleButton.setImage(UIImage(named: "apple"), for: .normal)
@@ -211,15 +261,10 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
             appleButton.widthAnchor.constraint(equalTo: buttonsContainerStackView.widthAnchor, multiplier: 1/3),
         ])
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    @objc func fruitButtonTapped(_ sender: UIButton) {
+        print("sender.tag = \(sender.tag)")
+    }
     
 }
 
