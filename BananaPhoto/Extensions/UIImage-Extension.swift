@@ -17,6 +17,9 @@ extension UIImage {
         let cellHeight = self.size.height / 5
         var fruitWidth = CGFloat()
         var fruitHeight = CGFloat()
+        var rotatedImage = [[UIImage]]()
+        
+        rotatedImage = setImage(image)
         
         if cellWidth < cellHeight {
             fruitWidth = cellWidth
@@ -54,8 +57,12 @@ extension UIImage {
                                       width: fruitWidth,
                                       height: fruitHeight)
                     }
+//                    rotatedImage = rotateImage(image)
+//                    print("rotatedImage = \(rotatedImage)")
+//                    rotatedImage.draw(in: rect)
+//                    image.draw(in: rect)
                     
-                    image.draw(in: rect)
+                    rotatedImage[i][j].draw(in: rect)
                 }
             }
         }
@@ -68,4 +75,46 @@ extension UIImage {
         return image
     }
     
+    fileprivate func setImage(_ image: UIImage) -> [[UIImage]] {
+        var imageArray : [[UIImage]] = [[UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),]]
+        
+        for i in 0..<5 {
+            for j in 0..<5 {
+                if (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1) {
+                    imageArray[i][j] = rotateImage(image)
+                }
+            }
+//            switch i {
+//            case 1,3:
+//                for j in 0...1 {
+////                    imageArray[i][j] = rotateImage(image)
+//                    imageArray[i].append(rotateImage(image))
+//                }
+//            case 0,2,4:
+//                for j in 0...2 {
+//                    imageArray[i].append(rotateImage(image))
+//                }
+//            default:
+//                break
+//            }
+        }
+        
+        return imageArray
+    }
+    
+    fileprivate func rotateImage(_ image: UIImage) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(image.size, false, 1.0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: image.size.width / 2, y: image.size.height / 2)
+        context?.rotate(by: CGFloat(Float.pi / 180 * Float.random(in: 0...360)))
+        context?.draw(image.cgImage!, in: CGRect(x: -(image.size.width / 2), y: -(image.size.height / 2), width: image.size.width * 0.9, height: image.size.height * 0.9))
+        
+        let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return rotatedImage!
+    }
 }
