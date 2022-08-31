@@ -271,7 +271,6 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     }
     
     @objc func fruitButtonTapped(_ sender: UIButton) {
-        print("sender.tag = \(sender.tag)")
         let targetImage = selectedImageView.image
         var editedImage = UIImage()
         switch sender.tag {
