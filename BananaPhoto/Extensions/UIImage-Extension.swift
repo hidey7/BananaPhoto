@@ -11,8 +11,7 @@ import UIKit
 extension UIImage {
     
     func composite(image: UIImage) -> UIImage? {
-//        let fruitHeight = GCD.shared.gcd(Int(self.size.width), Int(self.size.height))
-//        let fruitWidth = fruitHeight
+        
         let cellWidth = self.size.width / 5
         let cellHeight = self.size.height / 5
         var fruitWidth = CGFloat()
@@ -57,11 +56,6 @@ extension UIImage {
                                       width: fruitWidth,
                                       height: fruitHeight)
                     }
-//                    rotatedImage = rotateImage(image)
-//                    print("rotatedImage = \(rotatedImage)")
-//                    rotatedImage.draw(in: rect)
-//                    image.draw(in: rect)
-                    
                     rotatedImage[i][j].draw(in: rect)
                 }
             }
@@ -88,19 +82,6 @@ extension UIImage {
                     imageArray[i][j] = rotateImage(image)
                 }
             }
-//            switch i {
-//            case 1,3:
-//                for j in 0...1 {
-////                    imageArray[i][j] = rotateImage(image)
-//                    imageArray[i].append(rotateImage(image))
-//                }
-//            case 0,2,4:
-//                for j in 0...2 {
-//                    imageArray[i].append(rotateImage(image))
-//                }
-//            default:
-//                break
-//            }
         }
         
         return imageArray
