@@ -19,7 +19,7 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image {
-                    self.selectedImage = image as! UIImage
+                    self.selectedImage = (image as! UIImage)
                     DispatchQueue.main.async {
                         self.imageContainerView.backgroundColor = .black
                         self.setImageToSelectedImageView(image: image as! UIImage)
@@ -74,9 +74,11 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         if selectedImage == nil {
             shareButtonItem.isEnabled = false
             saveButtonItem.isEnabled = false
+            navigationItem.leftBarButtonItem?.isEnabled = false
         } else {
             shareButtonItem.isEnabled = true
             saveButtonItem.isEnabled = true
+            navigationItem.leftBarButtonItem?.isEnabled = true
         }
     }
     
@@ -98,7 +100,9 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     //MARK: - NAVIGATIONBAR
     private func setupNavigationBar() {
         let barButton = UIBarButtonItem(image: UIImage(systemName: "photo"), style: .plain, target: self, action: #selector(barButtonItemTapped(_:)))
+        let clearButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(clearButtonTapped(_:)))
         navigationItem.rightBarButtonItem = barButton
+        navigationItem.leftBarButtonItem = clearButton
     }
     
     @objc func barButtonItemTapped(_ sender: UIBarButtonItem) {
@@ -108,6 +112,10 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @objc func clearButtonTapped(_ sender: UIBarButtonItem) {
+        self.selectedImageView.image = selectedImage
     }
     
     //MARK: - TOOLBAR
@@ -151,7 +159,7 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     
     @objc func saveButtonTapped(_ sender: UIButton) {
         print("saveButtonTapped")
-        let targetImage = selectedImage
+        let targetImage = selectedImageView.image
         let alertController = UIAlertController(title: "保存", message: "この画像を保存しますか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { [self] (ok) in
             UIImageWriteToSavedPhotosAlbum(targetImage!, self, #selector(showResultOfSaveImage(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -264,6 +272,19 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
     
     @objc func fruitButtonTapped(_ sender: UIButton) {
         print("sender.tag = \(sender.tag)")
+        let targetImage = selectedImageView.image
+        var editedImage = UIImage()
+        switch sender.tag {
+        case 0:
+            editedImage = (targetImage?.composite(image: UIImage(named: "bigbanana")!))!
+        case 1:
+            editedImage = (targetImage?.composite(image: UIImage(named: "biggrape")!))!
+        case 2:
+            editedImage = (targetImage?.composite(image: UIImage(named: "apple")!))!
+        default:
+            break
+        }
+        selectedImageView.image = editedImage
     }
     
 }
@@ -297,7 +318,7 @@ extension MainViewController {
             imageViewWidthConstraint.constant = imgWidth * widthScale
             imageViewHeightConstraint.constant = imgHeight * widthScale
             selectedImageView.layoutIfNeeded()
-                    
+            
         } else {
             
             imageViewWidthConstraint.constant = imgWidth * heightScale

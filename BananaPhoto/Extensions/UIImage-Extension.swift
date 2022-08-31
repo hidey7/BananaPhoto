@@ -1,0 +1,71 @@
+//
+//  UIImage-Extension.swift
+//  BananaPhoto
+//
+//  Created by 始関秀弥 on 2022/08/31.
+//
+
+import Foundation
+import UIKit
+
+extension UIImage {
+    
+    func composite(image: UIImage) -> UIImage? {
+//        let fruitHeight = GCD.shared.gcd(Int(self.size.width), Int(self.size.height))
+//        let fruitWidth = fruitHeight
+        let cellWidth = self.size.width / 5
+        let cellHeight = self.size.height / 5
+        var fruitWidth = CGFloat()
+        var fruitHeight = CGFloat()
+        
+        if cellWidth < cellHeight {
+            fruitWidth = cellWidth
+            fruitHeight = fruitWidth
+        } else if cellWidth > cellHeight {
+            fruitHeight = cellHeight
+            fruitWidth = fruitHeight
+        } else if cellWidth == cellHeight {
+            fruitWidth = cellWidth
+            fruitHeight = fruitWidth
+        }
+        
+        var rect = CGRect()
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        
+        for i in 0..<5 {
+            for j in 0..<5 {
+                if (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1) {
+                    if self.size.width < self.size.height {
+                        rect = CGRect(x: CGFloat(i * Int(cellWidth)),
+                                      y: CGFloat(j * Int(cellHeight)) + CGFloat((cellHeight - cellWidth) / 2),
+                                      width: fruitWidth,
+                                      height: fruitHeight)
+                    } else if self.size.width > self.size.height {
+                        rect = CGRect(x: CGFloat(i *  Int(cellWidth)) + CGFloat((cellWidth - cellHeight) / 2),
+                                      y: CGFloat(j * Int(cellHeight)),
+                                      width: fruitWidth,
+                                      height: fruitHeight)
+                        
+                    } else if self.size.width == self.size.height {
+                        rect = CGRect(x: CGFloat(i) * cellWidth,
+                                      y: CGFloat(j) * cellHeight,
+                                      width: fruitWidth,
+                                      height: fruitHeight)
+                    }
+                    
+                    image.draw(in: rect)
+                }
+            }
+        }
+        
+        
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+}

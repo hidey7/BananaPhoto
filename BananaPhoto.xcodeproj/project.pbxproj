@@ -15,6 +15,7 @@
 		C163A1DF26D06FC000528DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DE26D06FC000528DB5 /* Assets.xcassets */; };
 		C163A1E226D06FC000528DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1E026D06FC000528DB5 /* LaunchScreen.storyboard */; };
 		C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */; };
+		C1C02C2628BED7C500A67839 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C02C2528BED7C500A67839 /* UIImage-Extension.swift */; };
 		C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3C7A4286AB026008083D6 /* AddFruits.swift */; };
 		C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		C163A1E126D06FC000528DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C163A1E326D06FC000528DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNextViewController.swift; sourceTree = "<group>"; };
+		C1C02C2528BED7C500A67839 /* UIImage-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
 		C1D3C7A4286AB026008083D6 /* AddFruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruits.swift; sourceTree = "<group>"; };
 		C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		F6DB75E95EC5C49EBC94C3D0 /* Pods-BananaPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BananaPhoto.release.xcconfig"; path = "Target Support Files/Pods-BananaPhoto/Pods-BananaPhoto.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */,
+				C1C02C2528BED7C500A67839 /* UIImage-Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				C116357928B9EFB20054F49F /* MainViewController.swift in Sources */,
 				C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */,
 				C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */,
+				C1C02C2628BED7C500A67839 /* UIImage-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
