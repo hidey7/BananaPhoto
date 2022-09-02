@@ -70,12 +70,14 @@ extension UIImage {
     }
     
     fileprivate func setImage(_ image: UIImage) -> [[UIImage]] {
-        var imageArray : [[UIImage]] = [[UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),]]
+//        var imageArray : [[UIImage]] = [[UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
+//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),]]
         
+        var imageArray: [[UIImage]] = [[UIImage]]()
+        imageArray = [[UIImage]](repeating: [UIImage](repeating: UIImage(), count: 5), count: 5)
         for i in 0..<5 {
             for j in 0..<5 {
                 if (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1) {
