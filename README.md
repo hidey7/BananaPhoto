@@ -17,3 +17,4 @@ The app also asks for access to your photos to save them. Only processed photos 
 ## License
 
 "BananaPhotoApp" is released under the MIT License, see LICENSE.txt
+
