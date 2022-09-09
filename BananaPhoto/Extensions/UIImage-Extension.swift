@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    func composite(image: UIImage) -> UIImage? {
+    func addFruit(image: UIImage) -> UIImage? {
         
         let cellWidth = self.size.width / 5
         let cellHeight = self.size.height / 5
@@ -61,8 +61,6 @@ extension UIImage {
             }
         }
         
-        
-        
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -70,11 +68,6 @@ extension UIImage {
     }
     
     fileprivate func setImage(_ image: UIImage) -> [[UIImage]] {
-//        var imageArray : [[UIImage]] = [[UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),],
-//                                        [UIImage(),UIImage(),UIImage(),UIImage(),UIImage(),]]
         
         var imageArray: [[UIImage]] = [[UIImage]]()
         imageArray = [[UIImage]](repeating: [UIImage](repeating: UIImage(), count: 5), count: 5)
@@ -90,6 +83,7 @@ extension UIImage {
     }
     
     fileprivate func rotateImage(_ image: UIImage) -> UIImage {
+        
         UIGraphicsBeginImageContextWithOptions(image.size, false, 1.0)
         let context = UIGraphicsGetCurrentContext()
         context?.translateBy(x: image.size.width / 2, y: image.size.height / 2)
@@ -100,4 +94,5 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return rotatedImage!
     }
+    
 }

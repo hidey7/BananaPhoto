@@ -11,10 +11,8 @@
 		C116357928B9EFB20054F49F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C116357828B9EFB20054F49F /* MainViewController.swift */; };
 		C163A1D626D06FBE00528DB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D526D06FBE00528DB5 /* AppDelegate.swift */; };
 		C163A1D826D06FBE00528DB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */; };
-		C163A1DD26D06FBE00528DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DB26D06FBE00528DB5 /* Main.storyboard */; };
 		C163A1DF26D06FC000528DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C163A1DE26D06FC000528DB5 /* Assets.xcassets */; };
 		C163A1E226D06FC000528DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163A1E026D06FC000528DB5 /* LaunchScreen.storyboard */; };
-		C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */; };
 		C1C02C2628BED7C500A67839 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C02C2528BED7C500A67839 /* UIImage-Extension.swift */; };
 		C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D3C7A4286AB026008083D6 /* AddFruits.swift */; };
 		C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */; };
@@ -27,11 +25,9 @@
 		C163A1D226D06FBE00528DB5 /* BananaPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BananaPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C163A1D526D06FBE00528DB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C163A1DC26D06FBE00528DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C163A1DE26D06FC000528DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C163A1E126D06FC000528DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C163A1E326D06FC000528DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNextViewController.swift; sourceTree = "<group>"; };
 		C1C02C2528BED7C500A67839 /* UIImage-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
 		C1D3C7A4286AB026008083D6 /* AddFruits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruits.swift; sourceTree = "<group>"; };
 		C1E4FB5D2813CBAA006807D4 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				C163A1E026D06FC000528DB5 /* LaunchScreen.storyboard */,
-				C163A1DB26D06FBE00528DB5 /* Main.storyboard */,
 				C163A1DE26D06FC000528DB5 /* Assets.xcassets */,
 			);
 			path = View;
@@ -112,7 +107,6 @@
 			children = (
 				C163A1D526D06FBE00528DB5 /* AppDelegate.swift */,
 				C163A1D726D06FBE00528DB5 /* SceneDelegate.swift */,
-				C1B7840327AD2E7500AFDD6F /* NewNextViewController.swift */,
 				C116357828B9EFB20054F49F /* MainViewController.swift */,
 			);
 			path = Controller;
@@ -195,7 +189,6 @@
 			files = (
 				C163A1E226D06FC000528DB5 /* LaunchScreen.storyboard in Resources */,
 				C163A1DF26D06FC000528DB5 /* Assets.xcassets in Resources */,
-				C163A1DD26D06FBE00528DB5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1B7840427AD2E7500AFDD6F /* NewNextViewController.swift in Sources */,
 				C1E4FB5E2813CBAB006807D4 /* UIView-Extension.swift in Sources */,
 				C1D3C7A5286AB026008083D6 /* AddFruits.swift in Sources */,
 				C116357928B9EFB20054F49F /* MainViewController.swift in Sources */,
@@ -244,14 +236,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C163A1DB26D06FBE00528DB5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C163A1DC26D06FBE00528DB5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C163A1E026D06FC000528DB5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -314,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -369,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

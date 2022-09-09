@@ -9,26 +9,7 @@ import UIKit
 import AVFoundation
 import PhotosUI
 
-class MainViewController: UIViewController, PHPickerViewControllerDelegate {
-    
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        picker.dismiss(animated: true)
-        
-        let itemProvider = results.first?.itemProvider
-        
-        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                if let image = image {
-                    self.selectedImage = (image as! UIImage)
-                    DispatchQueue.main.async {
-                        self.imageContainerView.backgroundColor = .black
-                        self.setImageToSelectedImageView(image: image as! UIImage)
-                        self.checkIsEnableAboutToobarButtons()
-                    }
-                }
-            }
-        }
-    }
+class MainViewController: UIViewController {
     
     
     var toolBar = UIToolbar()
@@ -65,7 +46,6 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         }
-        
         setupUI()
         checkIsEnableAboutToobarButtons()
     }
@@ -93,7 +73,6 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         imageContainerView.addSubview(selectedImageView)
         selectedImageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor).isActive = true
         selectedImageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor).isActive = true
-        
     }
     
     
@@ -275,11 +254,11 @@ class MainViewController: UIViewController, PHPickerViewControllerDelegate {
         var editedImage = UIImage()
         switch sender.tag {
         case 0:
-            editedImage = (targetImage?.composite(image: UIImage(named: "bigbanana")!))!
+            editedImage = (targetImage?.addFruit(image: UIImage(named: "bigbanana")!))!
         case 1:
-            editedImage = (targetImage?.composite(image: UIImage(named: "biggrape")!))!
+            editedImage = (targetImage?.addFruit(image: UIImage(named: "biggrape")!))!
         case 2:
-            editedImage = (targetImage?.composite(image: UIImage(named: "apple")!))!
+            editedImage = (targetImage?.addFruit(image: UIImage(named: "apple")!))!
         default:
             break
         }
@@ -326,8 +305,29 @@ extension MainViewController {
             
         }
         
-        
-        
-        
     }
+    
+}
+
+extension MainViewController: PHPickerViewControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let image = image {
+                    self.selectedImage = (image as! UIImage)
+                    DispatchQueue.main.async {
+                        self.imageContainerView.backgroundColor = .black
+                        self.setImageToSelectedImageView(image: image as! UIImage)
+                        self.checkIsEnableAboutToobarButtons()
+                    }
+                }
+            }
+        }
+    }
+    
 }

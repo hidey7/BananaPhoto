@@ -1,0 +1,6 @@
+framework module Pods_BananaPhoto {
+  umbrella header "Pods-BananaPhoto-umbrella.h"
+
+  export *
+  module * { export * }
+}
