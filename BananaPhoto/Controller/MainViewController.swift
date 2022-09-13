@@ -46,6 +46,7 @@ class MainViewController: UIViewController {
             self.navigationController?.navigationBar.standardAppearance = appearance
             self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         }
+        
         setupUI()
         checkIsEnableAboutToobarButtons()
     }
@@ -99,6 +100,7 @@ class MainViewController: UIViewController {
     
     //MARK: - TOOLBAR
     private func setupToolBar() {
+        toolBar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44)
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.barTintColor = .white
         toolBar.backgroundColor = .white
@@ -119,7 +121,6 @@ class MainViewController: UIViewController {
         toolBar.items = [shareButtonItem, flexibleItem, saveButtonItem]
         
         self.view.addSubview(toolBar)
-        toolBar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         NSLayoutConstraint.activate([
             toolBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             toolBar.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
@@ -129,7 +130,6 @@ class MainViewController: UIViewController {
     }
     
     @objc func shareButtonTapped(_ sender: UIButton) {
-        print("shareButtonTapped")
         let shareImage = selectedImageView.image
         let items = [shareImage as Any] as [Any]
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
@@ -137,13 +137,12 @@ class MainViewController: UIViewController {
     }
     
     @objc func saveButtonTapped(_ sender: UIButton) {
-        print("saveButtonTapped")
         let targetImage = selectedImageView.image
         let alertController = UIAlertController(title: "保存", message: "この画像を保存しますか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { [self] (ok) in
             UIImageWriteToSavedPhotosAlbum(targetImage!, self, #selector(showResultOfSaveImage(_:didFinishSavingWithError:contextInfo:)), nil)
         }
-        let cancelAction = UIAlertAction(title: "CANCEL", style: .default) { (cancel) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (cancel) in
             alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(cancelAction)
@@ -188,8 +187,6 @@ class MainViewController: UIViewController {
         self.view.addSubview(superStackView)
         
         NSLayoutConstraint.activate([
-            superStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            superStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             superStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             superStackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             superStackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
@@ -211,7 +208,6 @@ class MainViewController: UIViewController {
         self.appleButton = UIButton()
         
         buttonsContainerStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsContainerStackView.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
         buttonsContainerStackView.axis = .horizontal
         
         bananaButton.translatesAutoresizingMaskIntoConstraints = false
