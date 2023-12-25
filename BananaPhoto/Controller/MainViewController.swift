@@ -1,9 +1,3 @@
-//
-//  MainViewController.swift
-//  BananaPhoto
-//
-//  Created by 始関秀弥 on 2022/08/27.
-//
 
 import UIKit
 import AVFoundation
