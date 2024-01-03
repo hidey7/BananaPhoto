@@ -1,4 +1,3 @@
-
 import UIKit
 import AVFoundation
 import PhotosUI
@@ -28,6 +27,11 @@ class MainViewController: UIViewController {
     
     var imageViewWidthConstraint: NSLayoutConstraint!
     var imageViewHeightConstraint: NSLayoutConstraint!
+    
+    override func loadView() {
+        super.loadView()
+        self.view = MainView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
